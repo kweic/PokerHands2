@@ -5,11 +5,11 @@ import java.util.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-public class CollectionTest{
 	/**
-	* <marquee><b>CollectionTest</b> Javadoc</marquee>
+	* <b>CollectionTest</b> Javadoc
 	*/
+public class CollectionTest{
+
 	private List<Integer> numberList;
 	
 	@Before
