@@ -4,8 +4,9 @@
                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.manifestcorp</groupId>
-  <artifactId>mavenized-lab3</artifactId>
+  <artifactId>lab</artifactId>
   <version>1</version>
+  <packaging>jar</packaging>
   <description>Manifest Bootcamp practice with Mavanizing a project</description>
   
   <dependencies>
