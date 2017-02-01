@@ -1,6 +1,6 @@
 package com.manifestcorp;
 
-class NumberPrinter{
+public class NumberPrinter{
 	
 	public static void main(String[] args){
 		System.out.println("Number printing started");
