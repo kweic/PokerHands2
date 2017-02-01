@@ -6,7 +6,7 @@
   <groupId>com.manifestcorp</groupId>
   <artifactId>mavenized-lab3</artifactId>
   <version>1</version>
-  
+  <description>Manifest Bootcamp practice with Mavanizing a project</description>
   
   <dependencies>
     <dependency>
