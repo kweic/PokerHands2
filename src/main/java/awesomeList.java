@@ -5,6 +5,7 @@ import java.util.ArrayList;
 class AwesomeList{
 	private ArrayList<String> myList;
 	private int listSize;
+	//test change
 	
 	public AwesomeList(int size){
 		this.listSize = size;
