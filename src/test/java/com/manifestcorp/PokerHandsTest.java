@@ -21,9 +21,7 @@ public class PokerHandsTest {
 	@Before public void initialize() {
 	       cardComparator = new CardComparator();
 	       handChecker = new HandChecker();
-	       inputParser = new CardsInputParser();
-	       ArrayList<Card> cardsArray1 = inputParser.makeCardArray(CARDS1);
-	       cardHand1 = new Hand(true, cardsArray1); //black
+	       
 	       
 	}
 
@@ -52,13 +50,13 @@ public class PokerHandsTest {
 	}
 	
 	@Test
-	public void cardParserCreatesCardArray() throws Exception {
-		fail("not implemented");
+	public void testHandCreatesCards() throws Exception {
+		cardHand1 = new Hand(true, CARDS1); //black
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testInputParserThrowsExceptionIfBadInput() throws Exception {
-		inputParser.makeCardArray(BAD_INPUT_TOO_MANY_CARDS);
+	public void testHandThrowsExceptionIfBadInput() throws Exception {
+		cardHand1 = new Hand(true, BAD_INPUT_TOO_MANY_CARDS);
 	}
 	//hand is two pair
 	//hand is three of a kind
