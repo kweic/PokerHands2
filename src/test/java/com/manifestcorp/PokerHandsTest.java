@@ -58,7 +58,7 @@ public class PokerHandsTest {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testInputParserThrowsExceptionIfBadInput() throws Exception {
-		inputParser.makeCardArray(BAD_INPUT_TOO_MANY_CARDS );
+		inputParser.makeCardArray(BAD_INPUT_TOO_MANY_CARDS);
 	}
 	//hand is two pair
 	//hand is three of a kind
