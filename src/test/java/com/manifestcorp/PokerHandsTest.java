@@ -10,11 +10,13 @@ import junit.framework.TestCase;
 public class PokerHandsTest {
 
 	private CardComparator cardComparator;
+	private Hand cardHand1;
 	private char KING = 'K';
 	private  char TWO = '2';
 	
 	@Before public void initialize() {
 	       cardComparator = new CardComparator();
+	       cardHand1 = new Hand();
 	}
 
 	
@@ -36,6 +38,10 @@ public class PokerHandsTest {
 		assertTrue(cardComparator.isEqualCards(KING, KING));
 	}
 	//hand is a pair
+	@Test
+	public void testHandHasAPair() throws Exception {
+		assertTrue(cardHand1.isPair());
+	}
 	//hand is two pair
 	//hand is three of a kind
 	//hand is a straight
