@@ -13,9 +13,11 @@ public class PokerHandsTest {
 	private Hand cardHand1;
 	private char KING = 'K';
 	private  char TWO = '2';
+	private HandChecker handChecker;
 	
 	@Before public void initialize() {
 	       cardComparator = new CardComparator();
+	       handChecker = new HandChecker();
 	       cardHand1 = new Hand();
 	}
 
@@ -40,7 +42,8 @@ public class PokerHandsTest {
 	//hand is a pair
 	@Test
 	public void testHandHasAPair() throws Exception {
-		assertTrue(cardHand1.isPair());
+
+		assertTrue(handChecker.isPair(cardHand1));
 	}
 	//hand is two pair
 	//hand is three of a kind
