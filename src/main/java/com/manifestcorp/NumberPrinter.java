@@ -13,13 +13,13 @@ public class NumberPrinter{
 			return;
 		}
 		
-		int starSpaceMax = 30;
+		int starSpaceMax = 20;
 		int starSpaceCount = 0;
 		boolean addingGap = true;
 			
 		for(int i = 0; i <= n; i++){
 			
-			if(i % 10000 == 0){
+			if(i % 5 == 0){
 				if(addingGap){
 					starSpaceCount++;
 					if(starSpaceCount > starSpaceMax)addingGap = !addingGap;
@@ -27,10 +27,14 @@ public class NumberPrinter{
 					starSpaceCount--;
 					if(starSpaceCount < 0)addingGap = !addingGap;
 				}
-				
 			}
 			
 			System.out.println(i+appendStarWithGap(starSpaceCount));
+			try{
+				Thread.sleep(10);
+			}catch(Exception e){
+				//ignore
+			}
 			
 		}
 	}
