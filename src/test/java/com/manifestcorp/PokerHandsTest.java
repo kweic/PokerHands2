@@ -14,14 +14,15 @@ public class PokerHandsTest {
 	private char KING = 'K';
 	private  char TWO = '2';
 	private HandChecker handChecker;
-	private String cards1 = "2H 3D 5S 9C KD";
+	private String CARDS1 = "2H 3D 5S 9C KD";
 	private CardsInputParser inputParser;
+	private String BAD_INPUT_TOO_MANY_CARDS = CARDS1+" 4H";
 	
 	@Before public void initialize() {
 	       cardComparator = new CardComparator();
 	       handChecker = new HandChecker();
 	       inputParser = new CardsInputParser();
-	       ArrayList<Card> cardsArray1 = inputParser.makeCardArray(cards1);
+	       ArrayList<Card> cardsArray1 = inputParser.makeCardArray(CARDS1);
 	       cardHand1 = new Hand(true, cardsArray1); //black
 	       
 	}
@@ -54,10 +55,16 @@ public class PokerHandsTest {
 	public void cardParserCreatesCardArray() throws Exception {
 		fail("not implemented");
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testInputParserThrowsExceptionIfBadInput() throws Exception {
+		inputParser.makeCardArray(BAD_INPUT_TOO_MANY_CARDS );
+	}
 	//hand is two pair
 	//hand is three of a kind
 	//hand is a straight
 	//hand is a flush
+	//input is valid for hands
 	
 
 }
