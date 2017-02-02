@@ -3,7 +3,7 @@ package com.manifestcorp;
 
 public class FizzBuzzer {
 	
-	static String printFizzBuzzToNumber(int n){
+	static String printTo(int n){
 		StringBuilder sb = new StringBuilder();
 		for(int i = 1; i <= n; i++){
 			sb.append(fizzBuzzForDivisibleNumbers(3,5,i));

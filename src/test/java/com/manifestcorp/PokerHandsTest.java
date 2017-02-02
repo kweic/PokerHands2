@@ -17,6 +17,7 @@ public class PokerHandsTest {
 	private HandChecker handChecker;
 	private String CARDS1 = "2H 3D 5S 9C KD";
 	private String BAD_INPUT_TOO_MANY_CARDS = CARDS1+" 4H";
+	private String BAD_INPUT_TOO_FEW_CARDS = "2H 3D 5S 9C";
 	
 	@Before public void initialize() {
 	       cardComparator = new CardComparator();
@@ -29,7 +30,6 @@ public class PokerHandsTest {
 		handChecker = null;
 	}
 
-	
 	//tests to write
 	//card is higher than other
 	@Test
@@ -55,13 +55,28 @@ public class PokerHandsTest {
 	
 	@Test
 	public void testHandCreatesCards() throws Exception {
-		cardHand1 = new Hand(true, CARDS1); //black
+		cardHand1 = new Hand(CARDS1); //black
 		assertEquals("char value of card number should be equal", CARDS1.charAt(0), cardHand1.cards.get(0).cardNumber); 
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testHandThrowsExceptionIfBadInput() throws Exception {
-		cardHand1 = new Hand(true, BAD_INPUT_TOO_MANY_CARDS);
+	public void testHandThrowsExceptionIfBadInput_TooManyCards() throws Exception {
+		cardHand1 = new Hand(BAD_INPUT_TOO_MANY_CARDS);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testHandThrowsExceptionIfBadInput_TooFewCards() throws Exception {
+		cardHand1 = new Hand(BAD_INPUT_TOO_FEW_CARDS);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testHandThrowsExceptionIfBadInput_NullInput() throws Exception {
+		cardHand1 = new Hand(null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testHandThrowsExceptionIfBadInput_EmptyInput() throws Exception {
+		cardHand1 = new Hand("");
 	}
 	//hand is two pair
 	//hand is three of a kind

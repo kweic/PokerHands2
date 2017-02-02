@@ -18,13 +18,13 @@ public class FizzBuzzTest {
 	
 	@Test
 	public void countNumberOfOutputLines(){
-		int lineCount = fizzBuzzer.printFizzBuzzToNumber(100).split("\n").length;
+		int lineCount = fizzBuzzer.printTo(100).split("\n").length;
 		assertEquals("testing line count of printed list ", 100, lineCount);
 	}
 	
 	@Test
 	public void testUpToTwentyIsCorrect(){
-		assertEquals("testing to twenty from sample output ", COUNT_TO_20, fizzBuzzer.printFizzBuzzToNumber(20));
+		assertEquals("testing to twenty from sample output ", COUNT_TO_20, fizzBuzzer.printTo(20));
 	}
 	
 	@Test
