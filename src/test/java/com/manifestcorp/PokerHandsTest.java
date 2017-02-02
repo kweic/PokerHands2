@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,14 +16,17 @@ public class PokerHandsTest {
 	private  char TWO = '2';
 	private HandChecker handChecker;
 	private String CARDS1 = "2H 3D 5S 9C KD";
-	private CardsInputParser inputParser;
 	private String BAD_INPUT_TOO_MANY_CARDS = CARDS1+" 4H";
 	
 	@Before public void initialize() {
 	       cardComparator = new CardComparator();
 	       handChecker = new HandChecker();
-	       
-	       
+	}
+	
+	@After
+	public void after(){
+		cardComparator = null;
+		handChecker = null;
 	}
 
 	
@@ -52,6 +56,7 @@ public class PokerHandsTest {
 	@Test
 	public void testHandCreatesCards() throws Exception {
 		cardHand1 = new Hand(true, CARDS1); //black
+		assertEquals("char value of card number should be equal", CARDS1.charAt(0), cardHand1.cards.get(0).cardNumber); 
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
