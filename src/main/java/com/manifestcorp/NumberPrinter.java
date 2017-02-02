@@ -8,18 +8,28 @@ public class NumberPrinter{
 		
 		try{
 			n = Integer.parseInt(args[0]);
+			printNumbersWithStar(n);
 		}catch (Exception e){
 			System.out.println("No number passed in argument..");
 			return;
 		}
-		
+	
+	}
+	
+	static void printNumbers(int n){
+		for(int i = 0; i <= n; i++){
+			System.out.println(i);
+		}
+	}
+	
+	static void printNumbersWithStar(int n){
 		int starSpaceMax = 20;
 		int starSpaceCount = 0;
 		boolean addingGap = true;
 			
 		for(int i = 0; i <= n; i++){
 			
-			if(i % 5 == 0){
+			if(i % 3 == 0){
 				if(addingGap){
 					starSpaceCount++;
 					if(starSpaceCount > starSpaceMax)addingGap = !addingGap;
