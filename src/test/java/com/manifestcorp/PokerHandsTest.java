@@ -10,6 +10,8 @@ import junit.framework.TestCase;
 public class PokerHandsTest {
 
 	private CardComparator cardComparator;
+	private char KING = 'K';
+	private  char TWO = '2';
 	
 	@Before public void initialize() {
 	       cardComparator = new CardComparator();
@@ -19,11 +21,20 @@ public class PokerHandsTest {
 	//tests to write
 	//card is higher than other
 	@Test
-	public void testCardsAreRankedInOrder() throws Exception {
+	public void testCardIsGreater() throws Exception {
 		//iterate through cards and check all of them
-		assertTrue(cardComparator.isGreaterCard('K', '2'));
+		assertTrue(cardComparator.isGreaterCard(KING, TWO));
+	}
+	
+	@Test
+	public void testCardIsLess() throws Exception {
+		assertFalse(cardComparator.isGreaterCard(TWO, KING));
 	}
 	//card is equal to other
+	@Test
+	public void testCardsAreEqual() throws Exception {
+		assertTrue(cardComparator.isEqualCards(KING, KING));
+	}
 	//hand is a pair
 	//hand is two pair
 	//hand is three of a kind
