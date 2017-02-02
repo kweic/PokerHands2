@@ -1,10 +1,16 @@
 package com.manifestcorp;
 
-public class Hand {
+import java.util.ArrayList;
 
+public class Hand {
+	ArrayList<Card> cards;
+	public Hand(ArrayList<Card> cards){
+		this.cards = cards;
+	}
+	
 	public boolean isPair() {
-		// TODO Auto-generated method stub
 		return false;
+		
 	}
 	
 }
