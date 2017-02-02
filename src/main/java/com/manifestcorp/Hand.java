@@ -4,13 +4,11 @@ import java.util.ArrayList;
 
 public class Hand {
 	ArrayList<Card> cards;
-	public Hand(ArrayList<Card> cards){
-		this.cards = cards;
-	}
+	boolean isBlack; //black or white
 	
-	public boolean isPair() {
-		return false;
-		
+	public Hand(boolean isBlack, ArrayList<Card> cards){
+		this.cards = cards;
+		this.isBlack = isBlack;
 	}
 	
 }

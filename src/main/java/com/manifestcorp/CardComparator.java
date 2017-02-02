@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class CardComparator {
 	ArrayList<Character> sortedCardValues;
 	public CardComparator(){
-		sortedCardValues = new ArrayList(Arrays.asList('2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'));
+		sortedCardValues = new ArrayList<Character>(Arrays.asList('2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'));
 	}
 	
 	public boolean isGreaterCard(char cardGreater, char cardLess){

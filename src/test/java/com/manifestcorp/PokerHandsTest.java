@@ -2,10 +2,10 @@ package com.manifestcorp;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
-
-import junit.framework.TestCase;
 
 public class PokerHandsTest {
 
@@ -14,11 +14,16 @@ public class PokerHandsTest {
 	private char KING = 'K';
 	private  char TWO = '2';
 	private HandChecker handChecker;
+	private String cards1 = "2H 3D 5S 9C KD";
+	private CardsInputParser inputParser;
 	
 	@Before public void initialize() {
 	       cardComparator = new CardComparator();
 	       handChecker = new HandChecker();
-	       cardHand1 = new Hand();
+	       inputParser = new CardsInputParser();
+	       ArrayList<Card> cardsArray1 = inputParser.makeCardArray(cards1);
+	       cardHand1 = new Hand(true, cardsArray1); //black
+	       
 	}
 
 	
@@ -42,8 +47,12 @@ public class PokerHandsTest {
 	//hand is a pair
 	@Test
 	public void testHandHasAPair() throws Exception {
-
 		assertTrue(handChecker.isPair(cardHand1));
+	}
+	
+	@Test
+	public void cardParserCreatesCardArray() throws Exception {
+		fail("not implemented");
 	}
 	//hand is two pair
 	//hand is three of a kind
