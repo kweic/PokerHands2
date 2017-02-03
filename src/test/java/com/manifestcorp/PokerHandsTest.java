@@ -25,8 +25,8 @@ public class PokerHandsTest {
 	private String CARDS_UNSORTED = "QD 2D TD 5D 8D";
 	private String CARDS_SORTED =   "2D 5D 8D TD QD";
 
-	private String CARDS_HIGHCARDISKING = "QD 2D TD 5D 8D";
-	private Object CARD_KING;
+	private String CARDS_HIGHCARDISKING = "QD KD TD 5D 8D";
+	private Object CARD_KING = "KD";
 	
 	@Before
 	public void init(){
@@ -101,7 +101,7 @@ public class PokerHandsTest {
 	@Test
 	public void testHighCardIsKing(){
 		hand = new Hand(CARDS_HIGHCARDISKING);
-		assertEquals(CARD_KING, hand.getCards().get(hand.getCards().size()-1));
+		assertEquals(CARD_KING, hand.getCards().get(hand.getCards().size()-1).toString());
 	}
 	
 	@Test
