@@ -70,12 +70,39 @@ public class PokerHandComparator {
 	}
 	
 	public boolean isTwoPair(Hand hand){
+		return false;
+	}
+	
+	private boolean isSinglePair(Hand hand) {
 		return cardCounter(hand, 2);
+	}
+	
+	private int handScore(Hand hand){
+		int handScore = 0;
+		if(isStraightFlush(hand)){
+			handScore = 7;
+		}else if(isFourOfAKind(hand)){
+			handScore = 6;
+		}else if(isFullHouse(hand)){
+			handScore = 5;
+		}else if(isFlush(hand)){
+			handScore = 4;
+		}else if(isThreeOfAKind(hand)){
+			handScore = 3;
+		}else if(isTwoPair(hand)){
+			handScore = 2;
+		}else if(isSinglePair(hand)){
+			handScore = 1;
+		}
+		return handScore;
 	}
 
 	public boolean firstHandWins(Hand hand1, Hand hand2) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean firstHandWins = false;
+		if(handScore(hand1) > handScore(hand2)){
+			firstHandWins = true;
+		}
+		return firstHandWins;
 	}
 	
 	

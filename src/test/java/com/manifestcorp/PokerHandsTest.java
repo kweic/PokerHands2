@@ -12,7 +12,7 @@ public class PokerHandsTest {
 	
 	private String CARDS_FLUSH = "2H 4H 6H 8H JH";
 	private String CARDS_STRAIGHT = "3D 4H 5S 6D 7C";
-	private String CARDS_FULLHOUSE;
+	private String CARDS_FULLHOUSE = "3C 3S 3D KD KH";
 	private String CARDS_PAIR = 	    "QD 2D TD QH 8D"; //queen pair
 	private String CARDS_THREEOFAKIND = "QD QH TD 5D QS"; //3 queens
 	private String CARDS_FOUROFAKIND =  "QD QH QS 5D QC"; //4 queens
