@@ -11,6 +11,7 @@ public class PokerHandsTest {
 	private String CARDS_FLUSH = "2H 4H 6H 8H JH";
 	private String CARDS_STRAIGHT = "3D 4H 5S 6D 7C";
 	private Hand hand;
+	private String CARDS_STRAIGHTFLUSH = "8D 9D TD JD QD";
 	
 	@Before
 	public void init(){
@@ -45,7 +46,8 @@ public class PokerHandsTest {
 	
 	@Test
 	public void testIsStraightFlush() {
-		fail("not impl");
+		hand = new Hand(CARDS_STRAIGHTFLUSH);
+		assertTrue(pokerHandComparator.isStraightFlush(hand));
 	}
 	
 	@Test

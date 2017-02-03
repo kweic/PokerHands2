@@ -29,6 +29,10 @@ public class PokerHandComparator {
 		return consecutive;
 	}
 	
+	public boolean isStraightFlush(Hand hand){
+		return isStraight(hand) && isFlush(hand);
+	}
+	
 	public boolean isFourOfAKind(Hand hand){
 		return false;
 	}
