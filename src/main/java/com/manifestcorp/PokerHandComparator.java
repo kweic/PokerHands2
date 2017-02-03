@@ -72,6 +72,11 @@ public class PokerHandComparator {
 	public boolean isTwoPair(Hand hand){
 		return cardCounter(hand, 2);
 	}
+
+	public boolean firstHandWins(Hand hand1, Hand hand2) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	
 }

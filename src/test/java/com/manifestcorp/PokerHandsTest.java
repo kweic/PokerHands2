@@ -16,7 +16,7 @@ public class PokerHandsTest {
 	private String CARDS_PAIR = 	    "QD 2D TD QH 8D"; //queen pair
 	private String CARDS_THREEOFAKIND = "QD QH TD 5D QS"; //3 queens
 	private String CARDS_FOUROFAKIND =  "QD QH QS 5D QC"; //4 queens
-	//private String CARDS_STRAIGHTFLUSH = "8D 9D TD JD QD";
+	private String CARDS_STRAIGHTFLUSH = "8D 9D TD JD QD";
 
 	//error cards
 	private String CARDS_TOOMANY = "3D 4H 5S 6D 7C TH";
@@ -104,6 +104,7 @@ public class PokerHandsTest {
 		assertEquals(CARD_KING, hand.getCards().get(hand.getCards().size()-1).toString());
 	}
 	
+	
 	@Test
 	public void test3isHigherThan2(){
 		fail("not implemented");
@@ -123,7 +124,12 @@ public class PokerHandsTest {
 	
 	@Test
 	public void testStraightFlushBeatsFourOfAKind(){
-		fail("not implemented");
+		//how to assert one hand beats another..
+		//what to pass back..
+		//pass two into method, return true for winner
+		Hand hand1 = new Hand(CARDS_STRAIGHTFLUSH);
+		Hand hand2 = new Hand(CARDS_FOUROFAKIND);
+		assertTrue(pokerHandComparator.firstHandWins(hand1, hand2));
 	}
 	
 	@Test
