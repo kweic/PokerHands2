@@ -1,5 +1,7 @@
 package com.manifestcorp;
 
+import java.util.HashMap;
+
 public class PokerHandComparator {
 
 	public boolean isFlush(Hand hand){
@@ -33,12 +35,29 @@ public class PokerHandComparator {
 		return isStraight(hand) && isFlush(hand);
 	}
 	
+	private boolean cardCounter(Hand hand, int count){
+		HashMap<CardValue, Integer> cardCount = new HashMap<CardValue, Integer>();
+		boolean hasCount = false;
+		
+		for(Card card: hand.getCards()){
+			if(cardCount.containsKey(card.getValue())){
+				cardCount.put(card.getValue(), cardCount.get(card.getValue())+1);
+				if(cardCount.get(card.getValue()) == count){
+					hasCount = true;
+				}
+			}else{
+				cardCount.put(card.getValue(), 1);
+			}
+		}
+		return hasCount;
+	}
+	
 	public boolean isFourOfAKind(Hand hand){
-		return false;
+		return cardCounter(hand, 4);
 	}
 	
 	public boolean isThreeOfAKind(Hand hand){
-		return false;
+		return cardCounter(hand, 3);
 	}
 	
 	public boolean isFullHouse(Hand hand){
@@ -47,7 +66,7 @@ public class PokerHandComparator {
 	}
 	
 	public boolean isTwoPair(Hand hand){
-		return false;
+		return cardCounter(hand, 2);
 	}
 	
 	

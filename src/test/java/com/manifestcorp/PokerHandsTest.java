@@ -83,13 +83,13 @@ public class PokerHandsTest {
 	@Test
 	public void testIsThreeOfAKind() {
 		hand = new Hand(CARDS_THREEOFAKIND);
-		assertTrue(pokerHandComparator.isFourOfAKind(hand));
+		assertTrue(pokerHandComparator.isThreeOfAKind(hand));
 	}
 	
 	@Test
 	public void testIsPair() {
 		hand = new Hand(CARDS_PAIR);
-		assertTrue(pokerHandComparator.isFourOfAKind(hand));
+		assertTrue(pokerHandComparator.isTwoPair(hand));
 	}
 	
 	@Test
