@@ -14,9 +14,19 @@ public class PokerHandComparator {
 		return flush;
 	}
 	
+	private boolean twoCardsAreConsecutive(Card card1, Card card2){
+		return card2.getValue().ordinal() == (card1.getValue().ordinal() +1);
+	}
+	
 	public boolean isStraight(Hand hand){
 		//all consecutive cards
-		return false;
+		boolean consecutive = true;
+		for(int i = 0; i < hand.getCards().size()-1; i++){
+			if(!twoCardsAreConsecutive(hand.getCards().get(i), hand.getCards().get(i+1))){
+				consecutive = false;
+			}
+		}
+		return consecutive;
 	}
 	
 	public boolean isFourOfAKind(Hand hand){

@@ -9,7 +9,7 @@ public class PokerHandsTest {
 
 	private PokerHandComparator pokerHandComparator = new PokerHandComparator();
 	private String CARDS_FLUSH = "2H 4H 6H 8H JH";
-	private String CARDS_STRAIGHT;
+	private String CARDS_STRAIGHT = "3D 4H 5S 6D 7C";
 	private Hand hand;
 	
 	@Before
@@ -27,7 +27,14 @@ public class PokerHandsTest {
 	@Test
 	public void testIsStraight() {
 		//all consecutive values
-		fail("Not yet implemented");
+		hand = new Hand(CARDS_STRAIGHT);
+		assertTrue(pokerHandComparator.isStraight(hand));
+	}
+	
+	@Test
+	public void testIsNotFlush(){
+		hand = new Hand(CARDS_STRAIGHT);
+		assertFalse(pokerHandComparator.isFlush(hand));
 	}
 	
 //	@Test
