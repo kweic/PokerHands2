@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.manifestcorp.weather.WeatherStation;
-import com.manifestcorp.weather.WeatherStationImpl;
 
 public class OutfitChooserTest {
 
@@ -31,7 +30,6 @@ public class OutfitChooserTest {
 		expect(mockWeatherStation.getTemperature()).andReturn(10);
 		replay(mockWeatherStation);
 		assertEquals(Clothing.PARKA, outfitChooser.recommendClothingBasedOnWeather());
-		
 	}
 	
 	@Test
@@ -50,7 +48,6 @@ public class OutfitChooserTest {
 	
 	@Test
 	public void testTempOver95ForBathingSuit() {
-		
 		expect(mockWeatherStation.getTemperature()).andReturn(100);
 		replay(mockWeatherStation);
 		assertEquals(Clothing.BATHINGSUIT, outfitChooser.recommendClothingBasedOnWeather());

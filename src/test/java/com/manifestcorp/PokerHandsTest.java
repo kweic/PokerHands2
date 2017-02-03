@@ -18,6 +18,7 @@ public class PokerHandsTest {
 	private String CARDS1 = "2H 3D 5S 9C KD";
 	private String BAD_INPUT_TOO_MANY_CARDS = CARDS1+" 4H";
 	private String BAD_INPUT_TOO_FEW_CARDS = "2H 3D 5S 9C";
+	private String CARDS_PAIR = "9C 3D 5S 9C KD";
 	
 	@Before public void initialize() {
 	       cardComparator = new CardComparator();
@@ -50,6 +51,7 @@ public class PokerHandsTest {
 	//hand is a pair
 	@Test
 	public void testHandHasAPair() throws Exception {
+		cardHand1 = new Hand(CARDS_PAIR);
 		assertTrue(handChecker.isPair(cardHand1));
 	}
 	

@@ -14,7 +14,7 @@ public class CollectionTest{
 	
 	@Before
 	public void before(){
-		numberList = new ArrayList();
+		numberList = new ArrayList<Integer>();
 	}
 	
 	@After
