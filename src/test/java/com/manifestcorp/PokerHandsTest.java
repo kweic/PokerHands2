@@ -12,10 +12,29 @@ public class PokerHandsTest {
 	private String CARDS_STRAIGHT = "3D 4H 5S 6D 7C";
 	private Hand hand;
 	private String CARDS_STRAIGHTFLUSH = "8D 9D TD JD QD";
+	private String CARDS_FOUROFAKIND;
+	private String CARDS_FULLHOUSE;
+	private String CARDS_TOOMANY = "3D 4H 5S 6D 7C TH";
+	private String CARDS_TOO_FEW = "3D 4H 5S 6D";
 	
 	@Before
 	public void init(){
 		
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testNoCardInput(){
+		hand = new Hand("");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testNotEnoughCards(){
+		hand = new Hand(CARDS_TOO_FEW);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTooManyCards(){
+		hand = new Hand(CARDS_TOOMANY);
 	}
 	
 	@Test
@@ -52,13 +71,14 @@ public class PokerHandsTest {
 	
 	@Test
 	public void testFourOfAKind() {
-		fail("Not yet implemented");
+		hand = new Hand(CARDS_FOUROFAKIND);
+		assertTrue(pokerHandComparator.isFourOfAKind(hand));
 	}
 	
 	@Test
 	public void testIsFullHouse() {
-		//3 of same value and 2 pair
-		fail("Not yet implemented");
+		hand = new Hand(CARDS_FULLHOUSE);
+		assertTrue(pokerHandComparator.isFullHouse(hand));
 	}
 	
 	@Test
