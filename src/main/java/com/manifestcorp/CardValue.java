@@ -1,27 +1,39 @@
 package com.manifestcorp;
 
 public enum CardValue {
-	ONE("Parka"),
-	TWO("Short Sleeves"),
-	THREE("Long Sleeves"),
-	FOUR("Bathing Suit"),
-	FIVE(""),
-	SIX(""),
-	SEVEN(""),
-	EIGHT(""),
-	NINE(""),
-	TEN(""),
-	JACK(""),
-	QUEEN(""),
-	KING(""),
-	ACE("");
+	ONE('1'),
+	TWO('2'),
+	THREE('3'),
+	FOUR('4'),
+	FIVE('5'),
+	SIX('6'),
+	SEVEN('7'),
+	EIGHT('8'),
+	NINE('9'),
+	TEN('T'),
+	JACK('J'),
+	QUEEN('Q'),
+	KING('K'),
+	ACE('A');
 	
-	private String cardValue;
+	private char cardValue;
 	
-	CardValue(String cardValue){
+	CardValue(char cardValue){
 		this.cardValue = cardValue;
 	}
-	public String value(){
+	public char value(){
 		return cardValue;
 	}
+	
+	public static CardValue permissiveValueOf(char value){
+			for(CardValue card: values()){
+				if(card.cardValue == value){
+					return card;
+				}
+			}
+			return null;
+	}
+	
+	
+
 }

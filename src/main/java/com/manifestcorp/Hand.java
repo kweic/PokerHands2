@@ -10,7 +10,7 @@ public class Hand {
 		cards = new ArrayList<Card>();
 		
 		for(String card: cards_arr){
-			cards.add(new Card(CardValue.valueOf(card.charAt(0)), Suit.valueOf(card.charAt(1))));
+			cards.add(new Card(CardValue.permissiveValueOf(card.charAt(0)), Suit.permissiveValueOf(card.charAt(1))));
 		}
 	}
 	

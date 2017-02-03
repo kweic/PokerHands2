@@ -1,17 +1,27 @@
 package com.manifestcorp;
 
 public enum Suit {
-	DIAMOND("Diamond"),
-	CLUB("Club"),
-	HEART("Heart"),
-	SPADE("Spade");
+	DIAMOND('D'),
+	CLUB('C'),
+	HEART('H'),
+	SPADE('S');
 
-	private String suit;
+	private char suit;
 	
-	Suit(String suit){
+	Suit(char suit){
 		this.suit = suit;
 	}
-	public String suit(){
+	public char suit(){
 		return suit;
 	}
+	
+	public static Suit permissiveValueOf(char suitCompare){
+		for(Suit s: values()){
+			if(s.suit == suitCompare){
+				return s;
+			}
+		}
+		return null;
+}
+	
 }
