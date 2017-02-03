@@ -8,19 +8,25 @@ import org.junit.Test;
 public class PokerHandsTest {
 
 	private PokerHandComparator pokerHandComparator = new PokerHandComparator();
+	private Hand hand;
+	
 	private String CARDS_FLUSH = "2H 4H 6H 8H JH";
 	private String CARDS_STRAIGHT = "3D 4H 5S 6D 7C";
-	private Hand hand;
-	//private String CARDS_STRAIGHTFLUSH = "8D 9D TD JD QD";
-
 	private String CARDS_FULLHOUSE;
-	private String CARDS_TOOMANY = "3D 4H 5S 6D 7C TH";
-	private String CARDS_TOO_FEW = "3D 4H 5S 6D";
-	private String CARDS_UNSORTED = "QD 2D TD 5D 8D";
-	private String CARDS_SORTED =   "2D 5D 8D TD QD";
 	private String CARDS_PAIR = 	    "QD 2D TD QH 8D"; //queen pair
 	private String CARDS_THREEOFAKIND = "QD QH TD 5D QS"; //3 queens
 	private String CARDS_FOUROFAKIND =  "QD QH QS 5D QC"; //4 queens
+	//private String CARDS_STRAIGHTFLUSH = "8D 9D TD JD QD";
+
+	//error cards
+	private String CARDS_TOOMANY = "3D 4H 5S 6D 7C TH";
+	private String CARDS_TOO_FEW = "3D 4H 5S 6D";
+	
+	private String CARDS_UNSORTED = "QD 2D TD 5D 8D";
+	private String CARDS_SORTED =   "2D 5D 8D TD QD";
+
+	private String CARDS_HIGHCARDISKING = "QD 2D TD 5D 8D";
+	private Object CARD_KING;
 	
 	@Before
 	public void init(){
@@ -94,7 +100,8 @@ public class PokerHandsTest {
 	
 	@Test
 	public void testHighCardIsKing(){
-		fail("not implemented");
+		hand = new Hand(CARDS_HIGHCARDISKING);
+		assertEquals(CARD_KING, hand.getCards().get(hand.getCards().size()-1));
 	}
 	
 	@Test

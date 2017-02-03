@@ -52,6 +52,10 @@ public class PokerHandComparator {
 		return hasCount;
 	}
 	
+	public Card highCardFromFullHand(Hand hand){
+		return hand.getCards().get(hand.getCards().size()-1);
+	}
+	
 	public boolean isFourOfAKind(Hand hand){
 		return cardCounter(hand, 4);
 	}
