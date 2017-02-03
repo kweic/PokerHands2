@@ -2,18 +2,26 @@ package com.manifestcorp;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class PokerHandsTest {
 
-	private PokerHandComparator pokerHandComparator;
-	private String CARDS_FLUSH;
+	private PokerHandComparator pokerHandComparator = new PokerHandComparator();
+	private String CARDS_FLUSH = "2H 4H 6H 8H JH";
 	private String CARDS_STRAIGHT;
+	private Hand hand;
+	
+	@Before
+	public void init(){
+		
+	}
 	
 	@Test
 	public void testIsFlush() {
 		//all same suit
-		fail("Not yet implemented");
+		hand = new Hand(CARDS_FLUSH);
+		assertTrue(pokerHandComparator.isFlush(hand));
 	}
 	
 	@Test

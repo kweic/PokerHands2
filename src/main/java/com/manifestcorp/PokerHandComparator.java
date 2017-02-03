@@ -4,10 +4,14 @@ public class PokerHandComparator {
 
 	public boolean isFlush(Hand hand){
 		//all same suit
-		for(Card card: hand.getCards()){
-			
+		boolean flush = true;
+		for(int i = 0; i < hand.getCards().size()-1; i++){
+			if(hand.getCards().get(i).getSuit() != hand.getCards().get(i+1).getSuit()){
+				flush = false;
+				break;
+			}
 		}
-		return false;
+		return flush;
 	}
 	
 	public boolean isStraight(Hand hand){

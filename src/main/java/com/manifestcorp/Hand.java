@@ -16,7 +16,7 @@ public class Hand {
 	
 	public ArrayList<Card> getCards() {
 		// TODO Auto-generated method stub
-		return null;
+		return cards;
 	}
 	
 }
