@@ -7,6 +7,10 @@ public class Hand {
 	
 	public Hand(String cards_String){
 		String[] cards_arr = cards_String.split(" ");
+		if(cards_String.isEmpty() || cards_arr.length != 5){
+			throw new IllegalArgumentException();
+		}
+		
 		cards = new ArrayList<Card>();
 		
 		for(String card: cards_arr){
