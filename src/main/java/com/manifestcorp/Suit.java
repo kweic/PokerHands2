@@ -22,6 +22,5 @@ public enum Suit {
 			}
 		}
 		return null;
-}
-	
+	}
 }

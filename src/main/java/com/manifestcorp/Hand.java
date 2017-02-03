@@ -14,7 +14,7 @@ public class Hand {
 		}
 	}
 	
-	public Card getCards() {
+	public ArrayList<Card> getCards() {
 		// TODO Auto-generated method stub
 		return null;
 	}

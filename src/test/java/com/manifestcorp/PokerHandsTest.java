@@ -12,18 +12,20 @@ public class PokerHandsTest {
 	
 	@Test
 	public void testIsFlush() {
+		//all same suit
 		fail("Not yet implemented");
 	}
 	
 	@Test
 	public void testIsStraight() {
+		//all consecutive values
 		fail("Not yet implemented");
 	}
 	
-	@Test
-	public void testIsStraightFlush() {
-		fail("Not yet implemented");
-	}
+//	@Test
+//	public void testIsStraightFlush() {
+//		fail("Not yet implemented");
+//	}
 	
 	@Test
 	public void testFourOfAKind() {
@@ -32,6 +34,7 @@ public class PokerHandsTest {
 	
 	@Test
 	public void testIsFullHouse() {
+		//3 of same value and 2 pair
 		fail("Not yet implemented");
 	}
 	

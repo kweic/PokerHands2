@@ -33,7 +33,4 @@ public enum CardValue {
 			}
 			return null;
 	}
-	
-	
-
 }
