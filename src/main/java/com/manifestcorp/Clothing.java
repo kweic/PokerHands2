@@ -6,7 +6,6 @@ public enum Clothing{
 	LONGSLEEVE("Long Sleeves"),
 	BATHINGSUIT("Bathing Suit");
 	
-	
 	private String clothing;
 	
 	Clothing(String clothing){
