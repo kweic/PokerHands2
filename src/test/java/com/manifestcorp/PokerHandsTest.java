@@ -37,10 +37,16 @@ public class PokerHandsTest {
 		assertFalse(pokerHandComparator.isFlush(hand));
 	}
 	
-//	@Test
-//	public void testIsStraightFlush() {
-//		fail("Not yet implemented");
-//	}
+	@Test
+	public void testIsNotStraight(){
+		hand = new Hand(CARDS_FLUSH);
+		assertFalse(pokerHandComparator.isStraight(hand));
+	}
+	
+	@Test
+	public void testIsStraightFlush() {
+		fail("not impl");
+	}
 	
 	@Test
 	public void testFourOfAKind() {
