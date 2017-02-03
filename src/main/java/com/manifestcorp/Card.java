@@ -1,6 +1,6 @@
 package com.manifestcorp;
 
-public class Card {
+public class Card implements Comparable<Card>{
 	private Suit suit;
 	private CardValue value;
 	
@@ -20,6 +20,11 @@ public class Card {
 	@Override
 	public String toString(){
 		return value.name()+""+suit.name();
+	}
+
+	@Override
+	public int compareTo(Card o) {
+		return o.getValue().ordinal() - value.ordinal();
 	}
 
 }
