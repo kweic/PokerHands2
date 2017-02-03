@@ -17,6 +17,7 @@ public class PokerHandsTest {
 	private String CARDS_TOOMANY = "3D 4H 5S 6D 7C TH";
 	private String CARDS_TOO_FEW = "3D 4H 5S 6D";
 	private String CARDS_UNSORTED = "QD 2D TD 5D 8D";
+	private String CARDS_SORTED = "2D 5D 8D TD QD";
 	
 	@Before
 	public void init(){
@@ -105,8 +106,7 @@ public class PokerHandsTest {
 	@Test
 	public void testHandIsSorted(){
 		hand = new Hand(CARDS_UNSORTED);
-		System.out.println(hand);
-		assertEquals(1, hand.getCards().toArray());
+		assertEquals(CARDS_SORTED, hand.toString());
 	}
 	
 	@Test
