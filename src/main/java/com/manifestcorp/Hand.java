@@ -1,6 +1,7 @@
 package com.manifestcorp;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Hand {
 	ArrayList<Card> cards;
@@ -16,6 +17,8 @@ public class Hand {
 		for(String card: cards_arr){
 			cards.add(new Card(CardValue.permissiveValueOf(card.charAt(0)), Suit.permissiveValueOf(card.charAt(1))));
 		}
+		
+		Collections.sort(cards);
 	}
 	
 	public ArrayList<Card> getCards() {

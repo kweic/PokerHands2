@@ -23,8 +23,8 @@ public class Card implements Comparable<Card>{
 	}
 
 	@Override
-	public int compareTo(Card o) {
-		return o.getValue().ordinal() - value.ordinal();
+	public int compareTo(Card compare) {
+		return this.value.ordinal() - compare.getValue().ordinal();
 	}
 
 }
