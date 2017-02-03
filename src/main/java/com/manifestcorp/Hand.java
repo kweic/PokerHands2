@@ -23,4 +23,13 @@ public class Hand {
 		return cards;
 	}
 	
+	@Override
+	public String toString(){
+		StringBuilder sb = new StringBuilder();
+		for(Card card: cards){
+			sb.append(card.getValue().value()+""+card.getSuit().suit()+" ");
+		}
+		return sb.toString().substring(0, sb.toString().length()-1);
+	}
+	
 }

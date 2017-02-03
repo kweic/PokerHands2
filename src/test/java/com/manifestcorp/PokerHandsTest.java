@@ -16,6 +16,7 @@ public class PokerHandsTest {
 	private String CARDS_FULLHOUSE;
 	private String CARDS_TOOMANY = "3D 4H 5S 6D 7C TH";
 	private String CARDS_TOO_FEW = "3D 4H 5S 6D";
+	private String CARDS_UNSORTED = "QD 2D TD 5D 8D";
 	
 	@Before
 	public void init(){
@@ -64,12 +65,6 @@ public class PokerHandsTest {
 	}
 	
 	@Test
-	public void testIsStraightFlush() {
-		hand = new Hand(CARDS_STRAIGHTFLUSH);
-		assertTrue(pokerHandComparator.isStraightFlush(hand));
-	}
-	
-	@Test
 	public void testFourOfAKind() {
 		hand = new Hand(CARDS_FOUROFAKIND);
 		assertTrue(pokerHandComparator.isFourOfAKind(hand));
@@ -102,8 +97,16 @@ public class PokerHandsTest {
 	}
 	
 	@Test
+	public void testHandToStringMatches(){
+		hand = new Hand(CARDS_FLUSH);
+		assertEquals(CARDS_FLUSH, hand.toString());
+	}
+	
+	@Test
 	public void testHandIsSorted(){
-		fail("not implemented");
+		hand = new Hand(CARDS_UNSORTED);
+		System.out.println(hand);
+		assertEquals(1, hand.getCards().toArray());
 	}
 	
 	@Test
