@@ -68,8 +68,7 @@ public class PokerHandComparator {
 		return cardCounter(hand, 3, false);
 	}
 	
-	public boolean isFullHouse(Hand hand){
-		//3 pair and 2 pair
+	public boolean isFullHouse(Hand hand){ //3 pair and 2 pair
 		return cardCounter(hand, 3, true);
 	}
 	

@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Hand {
-	ArrayList<Card> cards;
+	private ArrayList<Card> cards;
+	private HandRank handRank;
 	
 	public Hand(String cards_String){
 		String[] cards_arr = cards_String.split(" ");
@@ -19,6 +20,15 @@ public class Hand {
 		}
 		
 		Collections.sort(cards);
+		handRank = handRank.UNRANKED;
+	}
+	
+	public void setHandRank(HandRank rank){
+		this.handRank = rank;
+	}
+	
+	public HandRank getRank(){
+		return handRank;
 	}
 	
 	public ArrayList<Card> getCards() {
