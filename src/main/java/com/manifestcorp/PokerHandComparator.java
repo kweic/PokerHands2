@@ -81,6 +81,7 @@ public class PokerHandComparator {
 	}
 	
 	private int handScore(Hand hand){
+		//todo: depricate this, use handranker
 		int handScore = 0;
 		if(isStraightFlush(hand)){
 			handScore = 7;
@@ -98,6 +99,26 @@ public class PokerHandComparator {
 			handScore = 1;
 		}
 		return handScore;
+	}
+	
+	private void rankHand(Hand hand){
+		HandRank rank = HandRank.HIGHCARD;
+		if(isStraightFlush(hand)){
+			rank = HandRank.STRAIGHTFLUSH;
+		}else if(isFourOfAKind(hand)){
+			rank = HandRank.FOUROFAKIND;
+		}else if(isFullHouse(hand)){
+			rank = HandRank.FULLHOUSE;
+		}else if(isFlush(hand)){
+			rank = HandRank.FLUSH;
+		}else if(isThreeOfAKind(hand)){
+			rank = HandRank.THREEOFAKIND;
+		}else if(isTwoPair(hand)){
+			rank = HandRank.TWOPAIR;
+		}else if(isSinglePair(hand)){
+			rank = HandRank.ONEPAIR;
+		}
+		hand.setHandRank(rank);
 	}
 
 	public boolean firstHandWins(Hand hand1, Hand hand2) {
