@@ -123,6 +123,56 @@ public class PokerHandsTest {
 	}
 	
 	@Test
+	public void testHandRankRoyalFlushAssigned(){
+		fail("not impl");
+	}
+	
+	@Test
+	public void testHandRankStraightFlushAssigned(){
+		fail("not impl");
+	}
+	
+	@Test
+	public void testHandFourOfAKindAssigned(){
+		fail("not impl");
+	}
+	
+	@Test
+	public void testHandFullHouseAssigned(){
+		fail("not impl");
+	}
+	
+	@Test
+	public void testHandFlushAssigned(){
+		fail("not impl");
+	}
+	
+	@Test
+	public void testHandStraightAssigned(){
+		fail("not impl");
+	}
+	
+	@Test
+	public void testHandThreeOfAKindAssigned(){
+		fail("not impl");
+	}
+	
+	@Test
+	public void testHandTwoPairAssigned(){
+		fail("not impl");
+	}
+	
+	@Test
+	public void testHandOnePairAssigned(){
+		fail("not impl");
+	}
+	
+	@Test
+	public void testHandHighCardAssigned(){
+		fail("not impl");
+	}
+	
+	@Test
 	public void testStraightFlushBeatsFourOfAKind(){
 		//how to assert one hand beats another..
 		//what to pass back..
