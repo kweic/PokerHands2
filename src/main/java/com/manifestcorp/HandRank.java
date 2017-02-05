@@ -23,12 +23,12 @@ public enum HandRank {
 		return handRank;
 	}
 	
-	public static HandRank permissiveValueOf(char rankCompare){
-		for(HandRank r: values()){
-			if(r.handRank.equals(rankCompare)){
-				return r;
-			}
-		}
-		return null;
-	}
+//	public static HandRank permissiveValueOf(String rankCompare){
+//		for(HandRank r: values()){
+//			if(r.handRank.equals(rankCompare)){
+//				return r;
+//			}
+//		}
+//		return null;
+//	}
 }

@@ -25,8 +25,10 @@ public class PokerHandsTest {
 	private String CARDS_UNSORTED = "QD 2D TD 5D 8D";
 	private String CARDS_SORTED =   "2D 5D 8D TD QD";
 
-	private String CARDS_HIGHCARDISKING = "QD KD TD 5D 8D";
+	private String CARDS_HIGHCARDISKING = "QS KD TH 5C 8D";
 	private Object CARD_KING = "KD";
+	private String CARDS_TWOPAIR = "QS QD 5H 3C 5D";
+	private String CARDS_ROYALFLUSH = "AH KH QH JH TH";
 	
 	@Before
 	public void init(){
@@ -54,6 +56,7 @@ public class PokerHandsTest {
 		hand = new Hand(CARDS_FLUSH);
 		assertTrue(pokerHandComparator.isFlush(hand));
 	}
+	
 	
 	@Test
 	public void testIsStraight() {
@@ -107,7 +110,9 @@ public class PokerHandsTest {
 	
 	@Test
 	public void test3isHigherThan2(){
-		fail("not implemented");
+		Card two = new Card(CardValue.permissiveValueOf('2'), Suit.permissiveValueOf('H'));
+		Card three = new Card(CardValue.permissiveValueOf('3'), Suit.permissiveValueOf('H'));
+		assertTrue(0 < three.compareTo(two));
 	}
 	
 	@Test
@@ -124,52 +129,72 @@ public class PokerHandsTest {
 	
 	@Test
 	public void testHandRankRoyalFlushAssigned(){
-		fail("not impl");
+		hand = new Hand(CARDS_ROYALFLUSH);
+		pokerHandComparator.rankHand(hand);
+		assertEquals(HandRank.ROYALFLUSH, hand.getRank());
 	}
 	
 	@Test
 	public void testHandRankStraightFlushAssigned(){
-		fail("not impl");
+		hand = new Hand(CARDS_STRAIGHTFLUSH);
+		pokerHandComparator.rankHand(hand);
+		assertEquals(HandRank.STRAIGHTFLUSH, hand.getRank());
 	}
 	
 	@Test
 	public void testHandFourOfAKindAssigned(){
-		fail("not impl");
+		hand = new Hand(CARDS_FOUROFAKIND);
+		pokerHandComparator.rankHand(hand);
+		assertEquals(HandRank.FOUROFAKIND, hand.getRank());
 	}
 	
 	@Test
 	public void testHandFullHouseAssigned(){
-		fail("not impl");
+		hand = new Hand(CARDS_FULLHOUSE);
+		pokerHandComparator.rankHand(hand);
+		assertEquals(HandRank.FULLHOUSE, hand.getRank());
 	}
 	
 	@Test
 	public void testHandFlushAssigned(){
-		fail("not impl");
+		hand = new Hand(CARDS_FLUSH);
+		pokerHandComparator.rankHand(hand);
+		assertEquals(HandRank.FLUSH, hand.getRank());
 	}
 	
 	@Test
 	public void testHandStraightAssigned(){
-		fail("not impl");
+		hand = new Hand(CARDS_STRAIGHT);
+		pokerHandComparator.rankHand(hand);
+		assertEquals(HandRank.STRAIGHT, hand.getRank());
 	}
 	
 	@Test
 	public void testHandThreeOfAKindAssigned(){
-		fail("not impl");
+		hand = new Hand(CARDS_THREEOFAKIND);
+		pokerHandComparator.rankHand(hand);
+		assertEquals(HandRank.THREEOFAKIND, hand.getRank());
 	}
 	
 	@Test
 	public void testHandTwoPairAssigned(){
-		fail("not impl");
+		hand = new Hand(CARDS_TWOPAIR);
+		pokerHandComparator.rankHand(hand);
+		assertEquals(HandRank.TWOPAIR, hand.getRank());
 	}
 	
 	@Test
 	public void testHandOnePairAssigned(){
-		fail("not impl");
+		hand = new Hand(CARDS_PAIR);
+		pokerHandComparator.rankHand(hand);
+		assertEquals(HandRank.ONEPAIR, hand.getRank());
 	}
 	
 	@Test
 	public void testHandHighCardAssigned(){
-		fail("not impl");
+		hand = new Hand(CARDS_HIGHCARDISKING);
+		pokerHandComparator.rankHand(hand);
+		assertEquals(HandRank.HIGHCARD, hand.getRank());
 	}
 	
 	@Test

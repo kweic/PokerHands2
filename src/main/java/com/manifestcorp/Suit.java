@@ -16,6 +16,7 @@ public enum Suit {
 	}
 	
 	public static Suit permissiveValueOf(char suitCompare){
+		//used for easy assignment of card by char to appropriate enum
 		for(Suit s: values()){
 			if(s.suit == suitCompare){
 				return s;

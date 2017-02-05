@@ -14,13 +14,13 @@ public class Hand {
 		}
 		
 		cards = new ArrayList<Card>();
+		handRank = handRank.UNRANKED;
 		
 		for(String card: cards_arr){
 			cards.add(new Card(CardValue.permissiveValueOf(card.charAt(0)), Suit.permissiveValueOf(card.charAt(1))));
 		}
 		
 		Collections.sort(cards);
-		handRank = handRank.UNRANKED;
 	}
 	
 	public void setHandRank(HandRank rank){
@@ -32,7 +32,6 @@ public class Hand {
 	}
 	
 	public ArrayList<Card> getCards() {
-		// TODO Auto-generated method stub
 		return cards;
 	}
 	

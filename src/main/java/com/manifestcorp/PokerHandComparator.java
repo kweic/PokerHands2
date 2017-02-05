@@ -17,6 +17,7 @@ public class PokerHandComparator {
 	}
 	
 	private boolean twoCardsAreConsecutive(Card card1, Card card2){
+		//todo: simplify this, no calls to ordinal from here
 		return card2.getValue().ordinal() == (card1.getValue().ordinal() +1);
 	}
 	
@@ -80,6 +81,7 @@ public class PokerHandComparator {
 		return cardCounter(hand, 2, false);
 	}
 	
+	
 	private int handScore(Hand hand){
 		//todo: depricate this, use handranker
 		int handScore = 0;
@@ -101,7 +103,7 @@ public class PokerHandComparator {
 		return handScore;
 	}
 	
-	private void rankHand(Hand hand){
+	public void rankHand(Hand hand){
 		HandRank rank = HandRank.HIGHCARD;
 		if(isStraightFlush(hand)){
 			rank = HandRank.STRAIGHTFLUSH;
@@ -111,6 +113,8 @@ public class PokerHandComparator {
 			rank = HandRank.FULLHOUSE;
 		}else if(isFlush(hand)){
 			rank = HandRank.FLUSH;
+		}else if(isStraight(hand)){
+			rank = HandRank.STRAIGHT;
 		}else if(isThreeOfAKind(hand)){
 			rank = HandRank.THREEOFAKIND;
 		}else if(isTwoPair(hand)){
