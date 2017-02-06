@@ -65,14 +65,6 @@ public class PokerHandComparator {
 		return cardCounter(hand, n, false);
 	}
 	
-//	public boolean isFourOfAKind(Hand hand){
-//		return cardCounter(hand, 4, false);
-//	}
-//	
-//	public boolean isThreeOfAKind(Hand hand){
-//		return cardCounter(hand, 3, false);
-//	}
-	
 	public boolean isFullHouse(Hand hand){ //3 pair and 2 pair
 		return cardCounter(hand, 3, true);
 	}
@@ -80,10 +72,6 @@ public class PokerHandComparator {
 	public boolean isTwoPair(Hand hand){
 		return false;
 	}
-	
-//	private boolean isSinglePair(Hand hand) {
-//		return cardCounter(hand, 2, false);
-//	}
 	
 	
 	private boolean isRoyalFlush(Hand hand){
