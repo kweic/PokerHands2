@@ -6,9 +6,6 @@ public class PokerGame {
 	String player2;
 	Hand player1Hand;
 	Hand player2Hand;
-	public PokerGame(){
-		
-	}
 	
 	public void passInput(String input){
 		String[] inputArr = input.split("  ");
@@ -21,5 +18,7 @@ public class PokerGame {
 		player2Hand = new Hand(player2Arr[1]);
 	}
 	
-	
+	public String determineWinner(){
+		return "";
+	}
 }

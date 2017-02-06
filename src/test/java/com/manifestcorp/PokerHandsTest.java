@@ -235,17 +235,19 @@ public class PokerHandsTest {
 	@Test
 	public void testHandWithHighCardWins(){
 		pokerGame.passInput("Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH");
-		fail("not implemented");
+		assertEquals("White wins. - with high card: Ace",pokerGame.determineWinner());
 	}
 	
 	@Test
 	public void testHandsTie(){
-		fail("not implemented");
+		pokerGame.passInput("Black: 2H 3D 5S 9C KD  White: 2D 3H 5C 9S KH");
+		assertEquals("Tie.", pokerGame.determineWinner());
 	}
 	
 	@Test
 	public void testTwoPairTieHighWins(){
-		fail("not implemented");
+		pokerGame.passInput("");
+		assertEquals("Black wins. - with Two Pair.", pokerGame.determineWinner());
 	}
 	
 	@Test
