@@ -61,13 +61,17 @@ public class PokerHandComparator {
 		return hand.getCards().get(hand.getCards().size()-1);
 	}
 	
-	public boolean isFourOfAKind(Hand hand){
-		return cardCounter(hand, 4, false);
+	public boolean isASetOf(int n, Hand hand){
+		return cardCounter(hand, n, false);
 	}
 	
-	public boolean isThreeOfAKind(Hand hand){
-		return cardCounter(hand, 3, false);
-	}
+//	public boolean isFourOfAKind(Hand hand){
+//		return cardCounter(hand, 4, false);
+//	}
+//	
+//	public boolean isThreeOfAKind(Hand hand){
+//		return cardCounter(hand, 3, false);
+//	}
 	
 	public boolean isFullHouse(Hand hand){ //3 pair and 2 pair
 		return cardCounter(hand, 3, true);
@@ -77,37 +81,26 @@ public class PokerHandComparator {
 		return false;
 	}
 	
-	private boolean isSinglePair(Hand hand) {
-		return cardCounter(hand, 2, false);
-	}
+//	private boolean isSinglePair(Hand hand) {
+//		return cardCounter(hand, 2, false);
+//	}
 	
 	
-	private int handScore(Hand hand){
-		//todo: depricate this, use handranker
-		int handScore = 0;
-		if(isStraightFlush(hand)){
-			handScore = 7;
-		}else if(isFourOfAKind(hand)){
-			handScore = 6;
-		}else if(isFullHouse(hand)){
-			handScore = 5;
-		}else if(isFlush(hand)){
-			handScore = 4;
-		}else if(isThreeOfAKind(hand)){
-			handScore = 3;
-		}else if(isTwoPair(hand)){
-			handScore = 2;
-		}else if(isSinglePair(hand)){
-			handScore = 1;
-		}
-		return handScore;
+	private boolean isRoyalFlush(Hand hand){
+		if(!isStraightFlush(hand))return false;
+		return (highCardFromFullHand(hand).getValue().value() == 'A' &&
+				hand.getCards().get(0).getValue().value() == 'T');
 	}
 	
 	public void rankHand(Hand hand){
 		HandRank rank = HandRank.HIGHCARD;
 		if(isStraightFlush(hand)){
-			rank = HandRank.STRAIGHTFLUSH;
-		}else if(isFourOfAKind(hand)){
+			if(isRoyalFlush(hand)){
+				rank = HandRank.ROYALFLUSH;
+			}else{
+				rank = HandRank.STRAIGHTFLUSH;
+			}
+		}else if(isASetOf(4, hand)){
 			rank = HandRank.FOUROFAKIND;
 		}else if(isFullHouse(hand)){
 			rank = HandRank.FULLHOUSE;
@@ -115,11 +108,11 @@ public class PokerHandComparator {
 			rank = HandRank.FLUSH;
 		}else if(isStraight(hand)){
 			rank = HandRank.STRAIGHT;
-		}else if(isThreeOfAKind(hand)){
+		}else if(isASetOf(3, hand)){
 			rank = HandRank.THREEOFAKIND;
 		}else if(isTwoPair(hand)){
 			rank = HandRank.TWOPAIR;
-		}else if(isSinglePair(hand)){
+		}else if(isASetOf(2, hand)){
 			rank = HandRank.ONEPAIR;
 		}
 		hand.setHandRank(rank);
@@ -127,7 +120,7 @@ public class PokerHandComparator {
 
 	public boolean firstHandWins(Hand hand1, Hand hand2) {
 		boolean firstHandWins = false;
-		if(handScore(hand1) > handScore(hand2)){
+		if(hand1.compareTo(hand2) > 0){
 			firstHandWins = true;
 		}
 		return firstHandWins;

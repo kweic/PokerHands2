@@ -3,7 +3,7 @@ package com.manifestcorp;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Hand {
+public class Hand implements Comparable<Hand>{
 	private ArrayList<Card> cards;
 	private HandRank handRank;
 	
@@ -42,6 +42,11 @@ public class Hand {
 			sb.append(card.getValue().value()+""+card.getSuit().suit()+" ");
 		}
 		return sb.toString().substring(0, sb.toString().length()-1);
+	}
+
+	@Override
+	public int compareTo(Hand compare) {
+		return this.handRank.ordinal() - compare.getRank().ordinal();
 	}
 	
 }

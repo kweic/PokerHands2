@@ -8,6 +8,7 @@ import org.junit.Test;
 public class PokerHandsTest {
 
 	private PokerHandComparator pokerHandComparator = new PokerHandComparator();
+	private PokerGame pokerGame = new PokerGame();
 	private Hand hand;
 	
 	private String CARDS_FLUSH = "2H 4H 6H 8H JH";
@@ -32,7 +33,7 @@ public class PokerHandsTest {
 	
 	@Before
 	public void init(){
-		
+		pokerGame = new PokerGame();
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -80,7 +81,7 @@ public class PokerHandsTest {
 	@Test
 	public void testFourOfAKind() {
 		hand = new Hand(CARDS_FOUROFAKIND);
-		assertTrue(pokerHandComparator.isFourOfAKind(hand));
+		assertTrue(pokerHandComparator.isASetOf(4,hand));
 	}
 	
 	@Test
@@ -92,13 +93,13 @@ public class PokerHandsTest {
 	@Test
 	public void testIsThreeOfAKind() {
 		hand = new Hand(CARDS_THREEOFAKIND);
-		assertTrue(pokerHandComparator.isThreeOfAKind(hand));
+		assertTrue(pokerHandComparator.isASetOf(3,hand));
 	}
 	
 	@Test
 	public void testIsPair() {
 		hand = new Hand(CARDS_PAIR);
-		assertTrue(pokerHandComparator.isTwoPair(hand));
+		assertTrue(pokerHandComparator.isASetOf(2,hand));
 	}
 	
 	@Test
@@ -204,11 +205,36 @@ public class PokerHandsTest {
 		//pass two into method, return true for winner
 		Hand hand1 = new Hand(CARDS_STRAIGHTFLUSH);
 		Hand hand2 = new Hand(CARDS_FOUROFAKIND);
+		pokerHandComparator.rankHand(hand1);
+		pokerHandComparator.rankHand(hand2);
 		assertTrue(pokerHandComparator.firstHandWins(hand1, hand2));
 	}
 	
 	@Test
+	public void testPokerGameParsesCardsBlackInput(){
+		pokerGame.passInput("Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH");
+		assertEquals(pokerGame.player1Hand.getCards().get(0).getValue().value(), '2');
+		assertEquals(pokerGame.player1Hand.getCards().get(1).getValue().value(), '3');
+		assertEquals(pokerGame.player1Hand.getCards().get(2).getValue().value(), '5');
+		assertEquals(pokerGame.player1Hand.getCards().get(3).getValue().value(), '9');
+		assertEquals(pokerGame.player1Hand.getCards().get(4).getValue().value(), 'K');
+		
+	}
+	
+	@Test
+	public void testPokerGameParsesCardsWhiteInput(){
+		pokerGame.passInput("Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH");
+		assertEquals(pokerGame.player2Hand.getCards().get(0).getValue().value(), '2');
+		assertEquals(pokerGame.player2Hand.getCards().get(1).getValue().value(), '3');
+		assertEquals(pokerGame.player2Hand.getCards().get(2).getValue().value(), '4');
+		assertEquals(pokerGame.player2Hand.getCards().get(3).getValue().value(), '8');
+		assertEquals(pokerGame.player2Hand.getCards().get(4).getValue().value(), 'A');
+		
+	}
+	
+	@Test
 	public void testHandWithHighCardWins(){
+		pokerGame.passInput("Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH");
 		fail("not implemented");
 	}
 	
