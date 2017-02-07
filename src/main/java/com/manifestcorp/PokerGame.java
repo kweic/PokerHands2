@@ -6,6 +6,10 @@ public class PokerGame {
 	String player2;
 	Hand player1Hand;
 	Hand player2Hand;
+	PokerHandComparator comparator;
+	public PokerGame(){
+		comparator = new PokerHandComparator();
+	}
 	
 	public void passInput(String input){
 		String[] inputArr = input.split("  ");
@@ -19,6 +23,18 @@ public class PokerGame {
 	}
 	
 	public String determineWinner(){
-		return "";
+		comparator.rankHand(player1Hand); //black
+		comparator.rankHand(player2Hand); //white
+		String result = "";
+		int playerScoreDifference = player1Hand.compareTo(player2Hand);
+		if(playerScoreDifference == 0){
+			result = "Tie.";
+		}else if(playerScoreDifference > 0){
+			result = "Black wins.";
+		}else{
+			result = "White wins.";
+		}
+		
+		return result;
 	}
 }

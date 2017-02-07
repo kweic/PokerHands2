@@ -235,7 +235,7 @@ public class PokerHandsTest {
 	@Test
 	public void testHandWithHighCardWins(){
 		pokerGame.passInput("Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH");
-		assertEquals("White wins. - with high card: Ace",pokerGame.determineWinner());
+		assertEquals("White wins.",pokerGame.determineWinner());
 	}
 	
 	@Test
@@ -247,13 +247,13 @@ public class PokerHandsTest {
 	@Test
 	public void testTwoPairTieHighWins(){
 		pokerGame.passInput("Black: 2H 5D 5S KH KD  White: 2D 3H 5C 9S KH");
-		assertEquals("Black wins. - with Two Pair.", pokerGame.determineWinner());
+		assertEquals("Black wins.", pokerGame.determineWinner());
 	}
 	
 	@Test
 	public void testStraightFlushHigherCardWins(){
 		pokerGame.passInput("Black: "+CARDS_ROYALFLUSH+"  White: "+CARDS_FLUSH);
-		assertEquals("Black wins. - with Royal Flush", pokerGame.determineWinner());
+		assertEquals("Black wins.", pokerGame.determineWinner());
 	}
 	
 	@Test

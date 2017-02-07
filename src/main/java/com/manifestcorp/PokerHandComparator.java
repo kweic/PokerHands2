@@ -13,6 +13,7 @@ public class PokerHandComparator {
 				break;
 			}
 		}
+
 		return flush;
 	}
 	
@@ -36,7 +37,7 @@ public class PokerHandComparator {
 		return isStraight(hand) && isFlush(hand);
 	}
 	
-	private boolean cardCounter(Hand hand, int count, boolean checkFullHouse){
+	private boolean cardCounter(Hand hand, int count, boolean checkFullHouse, boolean check2Pair){
 		HashMap<CardValue, Integer> cardCount = new HashMap<CardValue, Integer>();
 		boolean hasCount = false;
 		
@@ -54,6 +55,9 @@ public class PokerHandComparator {
 		if(checkFullHouse){
 			return cardCount.size() == 2;
 		}
+		if(check2Pair){
+			return cardCount.size() == 3;
+		}
 		return hasCount;
 	}
 	
@@ -62,15 +66,15 @@ public class PokerHandComparator {
 	}
 	
 	public boolean isASetOf(int n, Hand hand){
-		return cardCounter(hand, n, false);
+		return cardCounter(hand, n, false, false);
 	}
 	
 	public boolean isFullHouse(Hand hand){ //3 pair and 2 pair
-		return cardCounter(hand, 3, true);
+		return cardCounter(hand, 3, true, false);
 	}
 	
 	public boolean isTwoPair(Hand hand){
-		return false;
+		return cardCounter(hand, 2, false, true);
 	}
 	
 	

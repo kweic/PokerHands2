@@ -6,6 +6,7 @@ import java.util.Collections;
 public class Hand implements Comparable<Hand>{
 	private ArrayList<Card> cards;
 	private HandRank handRank;
+	private Card highTieBreakCard;
 	
 	public Hand(String cards_String){
 		String[] cards_arr = cards_String.split(" ");
@@ -21,6 +22,14 @@ public class Hand implements Comparable<Hand>{
 		}
 		
 		Collections.sort(cards);
+	}
+	
+	public void setHighTieBreakCard(Card card){
+		this.highTieBreakCard = card;
+	}
+	
+	public Card getHighTieBreakCard(){
+		return highTieBreakCard;
 	}
 	
 	public void setHandRank(HandRank rank){

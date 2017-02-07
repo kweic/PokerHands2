@@ -3,6 +3,7 @@ package com.manifestcorp;
 public class Card implements Comparable<Card>{
 	private Suit suit;
 	private CardValue value;
+
 	
 	public Card(CardValue value, Suit suit) {
 		this.value = value;
