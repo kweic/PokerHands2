@@ -272,8 +272,8 @@ public class PokerHandsTest {
 	
 	@Test
 	public void testThreeOfAKindHighTripletWins(){
-		pokerGame.passInput("Black: 2H 5D 5S KH KD  White: 2D 3H 5C 9S KH");
-		fail("not implemented");
+		pokerGame.passInput("Black: 2H KD 5S KH KD  White: 2D 3H 4C 4S 4H");
+		assertEquals("Black wins.", pokerGame.determineWinner());
 	}
 	
 	@Test

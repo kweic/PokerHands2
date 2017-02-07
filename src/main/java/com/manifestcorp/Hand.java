@@ -2,6 +2,7 @@ package com.manifestcorp;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 public class Hand implements Comparable<Hand>{
 	private ArrayList<Card> cards;
@@ -32,10 +33,38 @@ public class Hand implements Comparable<Hand>{
 				handRank == handRank.STRAIGHT ||
 				handRank == handRank.HIGHCARD){
 			tieBreakCard = cards.get((cards.size()-1)-n);
+		}else{
+			tieBreakCard = cardSetTieBreaker(n);
 		}
 		return tieBreakCard;
 	}
 	
+	private Card cardSetTieBreaker(int n) {
+		ArrayList<Card> tieBreakerSets = new ArrayList<Card>();
+		HashMap<Card, Integer> cardCounter = new HashMap<Card, Integer>();
+		for(Card card: cards){
+			if(cardCounter.containsKey(card)){
+				cardCounter.put(card, cardCounter.get(card)+1);
+			}else{
+				cardCounter.put(card, 1);
+			}
+		}
+		int setSize = cards.size();
+		while(setSize > 0){
+			for(Card card: cardCounter.keySet()){
+				if(cardCounter.get(card) == setSize){
+					tieBreakerSets.add(card);
+				}
+			}
+			setSize--;
+		}
+		
+		if(tieBreakerSets.size() < n){
+			return tieBreakerSets.get(n);
+		}
+		return null;
+	}
+
 	public void setHandRank(HandRank rank){
 		this.handRank = rank;
 	}

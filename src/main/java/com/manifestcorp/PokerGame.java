@@ -35,7 +35,9 @@ public class PokerGame {
 			Card hand2Card = hand2.getHighTieBreakCard(tieBreak);
 
 			tieBreak++;
+			System.out.println("hand types: "+hand1.getRank()+" 2: "+hand2.getRank());
 			int tieBreakDifference = hand1Card.compareTo(hand2Card);
+			System.out.println("hand types: "+hand1.getRank()+" 2: "+hand2.getRank());
 			
 			if(tieBreakDifference > 0){
 				result = "Black wins.";
