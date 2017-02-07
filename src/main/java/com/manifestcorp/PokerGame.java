@@ -31,14 +31,14 @@ public class PokerGame {
 		int tieBreak = 0;
 		String result = "Tie.";
 		while(tieBreak < hand1.getCards().size()-1){
-			Card hand1Card = hand1.getHighTieBreakCard(tieBreak);
-			Card hand2Card = hand2.getHighTieBreakCard(tieBreak);
-
+			CardValue hand1Card = hand1.getHighTieBreakCard(tieBreak);
+			CardValue hand2Card = hand2.getHighTieBreakCard(tieBreak);
+			System.out.println();
 			tieBreak++;
-			System.out.println("hand types: "+hand1.getRank()+" 2: "+hand2.getRank());
+			System.out.println(hand1+" .. "+ hand2);
+			System.out.println("comparing: "+hand1Card+" to "+hand2Card);
 			int tieBreakDifference = hand1Card.compareTo(hand2Card);
-			System.out.println("hand types: "+hand1.getRank()+" 2: "+hand2.getRank());
-			
+			System.out.println("tie break diff: "+tieBreakDifference);
 			if(tieBreakDifference > 0){
 				result = "Black wins.";
 				break;
@@ -54,6 +54,7 @@ public class PokerGame {
 		rankHands();
 		String result = "";
 		int playerScoreDifference = player1Hand.compareTo(player2Hand);
+		System.out.println(player1Hand.getRank()+" "+player2Hand.getRank());
 		if(playerScoreDifference == 0){
 			result = tieBreak(player1Hand, player2Hand);
 		}else if(playerScoreDifference > 0){

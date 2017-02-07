@@ -25,41 +25,44 @@ public class Hand implements Comparable<Hand>{
 		Collections.sort(cards);
 	}
 	
-	public Card getHighTieBreakCard(int n){
-		Card tieBreakCard = null;
+	public CardValue getHighTieBreakCard(int n){
+		CardValue tieBreakCard = null;
 		if(handRank == handRank.ROYALFLUSH || 
 				handRank == handRank.STRAIGHTFLUSH || 
 				handRank == handRank.FLUSH || 
 				handRank == handRank.STRAIGHT ||
 				handRank == handRank.HIGHCARD){
-			tieBreakCard = cards.get((cards.size()-1)-n);
+			tieBreakCard = cards.get((cards.size()-1)-n).getValue();
 		}else{
 			tieBreakCard = cardSetTieBreaker(n);
 		}
 		return tieBreakCard;
 	}
 	
-	private Card cardSetTieBreaker(int n) {
-		ArrayList<Card> tieBreakerSets = new ArrayList<Card>();
-		HashMap<Card, Integer> cardCounter = new HashMap<Card, Integer>();
+	private CardValue cardSetTieBreaker(int n) {
+		ArrayList<CardValue> tieBreakerSets = new ArrayList<CardValue>();
+		HashMap<CardValue, Integer> cardCounter = new HashMap<CardValue, Integer>();
 		for(Card card: cards){
-			if(cardCounter.containsKey(card)){
-				cardCounter.put(card, cardCounter.get(card)+1);
+			if(cardCounter.containsKey(card.getValue().value())){
+				cardCounter.put(card.getValue(), cardCounter.get(card)+1);
 			}else{
-				cardCounter.put(card, 1);
+				cardCounter.put(card.getValue(), 1);
 			}
 		}
 		int setSize = cards.size();
 		while(setSize > 0){
-			for(Card card: cardCounter.keySet()){
+			System.out.println("set size is now: "+setSize);
+			for(CardValue card: cardCounter.keySet()){
 				if(cardCounter.get(card) == setSize){
 					tieBreakerSets.add(card);
+					System.out.println("count: "+cardCounter.get(card));
+					System.out.println(" added card to set: "+card);
 				}
 			}
 			setSize--;
 		}
-		
-		if(tieBreakerSets.size() < n){
+
+		if(tieBreakerSets.size()-1 > n){
 			return tieBreakerSets.get(n);
 		}
 		return null;

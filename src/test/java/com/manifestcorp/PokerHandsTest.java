@@ -2,6 +2,7 @@ package com.manifestcorp;
 
 import static org.junit.Assert.*;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,9 +32,21 @@ public class PokerHandsTest {
 	private String CARDS_TWOPAIR = "QS QD 5H 3C 5D";
 	private String CARDS_ROYALFLUSH = "AH KH QH JH TH";
 	
+	//inputs
+	private String CARDSET_FULLHOUSETIEBREAK_WHITEWINS = "Black: 5H KD 5S KH KD  White: 6D 6H KC KS KH";
+	private String CARDSET_HIGHCARDWHITEACE = "Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH";
+	private String CARDSET_FULLHOUSETIEBREAK_BLACKWINS = "Black: 5H KD 5S KH KD  White: 2D 2H KC KS KH";
+	private String CARDSET_FULLHOUSE_BLACKWINS="Black: 5H KD 5S KH KD  White: 2D 2H QC QS QH";
+	private String CARDSET_HIGHTRIPLET_BLACKWINS="Black: 2H KD 5S KH KD  White: 2D 3H 4C 4S 4H";
+	
 	@Before
 	public void init(){
 		pokerGame = new PokerGame();
+	}
+	
+	@After
+	public void after(){
+		pokerGame = null;
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -202,14 +215,14 @@ public class PokerHandsTest {
 	public void testHighCardOfFlushIsSet(){
 		hand = new Hand(CARDS_FLUSH);
 		pokerHandComparator.rankHand(hand);
-		assertEquals(hand.getCards().get(4), hand.getHighTieBreakCard(0));
+		assertEquals(hand.getCards().get(4).getValue(), hand.getHighTieBreakCard(0));
 	}
 	
 	@Test
 	public void testHighCardOfStraightIsSet(){
 		hand = new Hand(CARDS_STRAIGHT);
 		pokerHandComparator.rankHand(hand);
-		assertEquals(hand.getCards().get(4), hand.getHighTieBreakCard(0));
+		assertEquals(hand.getCards().get(4).getValue(), hand.getHighTieBreakCard(0));
 	}
 	
 	@Test
@@ -226,7 +239,7 @@ public class PokerHandsTest {
 	
 	@Test
 	public void testPokerGameParsesCardsBlackInput(){
-		pokerGame.passInput("Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH");
+		pokerGame.passInput(CARDSET_HIGHCARDWHITEACE);
 		assertEquals(pokerGame.player1Hand.getCards().get(0).getValue().value(), '2');
 		assertEquals(pokerGame.player1Hand.getCards().get(1).getValue().value(), '3');
 		assertEquals(pokerGame.player1Hand.getCards().get(2).getValue().value(), '5');
@@ -237,7 +250,7 @@ public class PokerHandsTest {
 	
 	@Test
 	public void testPokerGameParsesCardsWhiteInput(){
-		pokerGame.passInput("Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH");
+		pokerGame.passInput(CARDSET_HIGHCARDWHITEACE);
 		assertEquals(pokerGame.player2Hand.getCards().get(0).getValue().value(), '2');
 		assertEquals(pokerGame.player2Hand.getCards().get(1).getValue().value(), '3');
 		assertEquals(pokerGame.player2Hand.getCards().get(2).getValue().value(), '4');
@@ -260,7 +273,7 @@ public class PokerHandsTest {
 	
 	@Test
 	public void testTwoPairTieHighWins(){
-		pokerGame.passInput("Black: 2H 5D 5S KH KD  White: 2D 3H 5C 9S KH");
+		pokerGame.passInput("Black: 2H 5D 5S AH AD  White: 2D 5H 5C KS KH");
 		assertEquals("Black wins.", pokerGame.determineWinner());
 	}
 	
@@ -272,13 +285,40 @@ public class PokerHandsTest {
 	
 	@Test
 	public void testThreeOfAKindHighTripletWins(){
-		pokerGame.passInput("Black: 2H KD 5S KH KD  White: 2D 3H 4C 4S 4H");
+		pokerGame.passInput(CARDSET_HIGHTRIPLET_BLACKWINS);
+		pokerGame.rankHands();
 		assertEquals("Black wins.", pokerGame.determineWinner());
 	}
 	
 	@Test
 	public void testBothFullHouseHigherThreeWins(){
-		fail("not implemented");
+		pokerGame.passInput(CARDSET_FULLHOUSE_BLACKWINS);
+		pokerGame.rankHands();
+		System.out.println(pokerGame.player1Hand+" : "+pokerGame.player2Hand);
+		assertEquals("Black wins.", pokerGame.determineWinner());
 	}
+	
+	@Test
+	public void testBothFullHouseTieBreak(){
+		//this can't happen with 1 deck of cards in a real game
+		pokerGame.passInput(CARDSET_FULLHOUSETIEBREAK_BLACKWINS);
+		pokerGame.rankHands();
+		assertEquals("Black wins.", pokerGame.determineWinner());
+	}
+	
+	@Test
+	public void testBothFullHouseTieBreakWhiteWins(){
+		//this can't happen with 1 deck of cards in a real game
+		pokerGame.passInput(CARDSET_FULLHOUSETIEBREAK_WHITEWINS);
+		pokerGame.rankHands();
+		assertEquals("White wins.", pokerGame.determineWinner());
+	}
+	
+	@Test
+	public void testWinDetailsHighCard(){
+	//	pokerGame.passInput(input);
+	}
+	
+	
 
 }
