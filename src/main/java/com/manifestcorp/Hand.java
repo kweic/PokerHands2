@@ -24,12 +24,16 @@ public class Hand implements Comparable<Hand>{
 		Collections.sort(cards);
 	}
 	
-	public void setHighTieBreakCard(Card card){
-		this.highTieBreakCard = card;
-	}
-	
-	public Card getHighTieBreakCard(){
-		return highTieBreakCard;
+	public Card getHighTieBreakCard(int n){
+		Card tieBreakCard = null;
+		if(handRank == handRank.ROYALFLUSH || 
+				handRank == handRank.STRAIGHTFLUSH || 
+				handRank == handRank.FLUSH || 
+				handRank == handRank.STRAIGHT ||
+				handRank == handRank.HIGHCARD){
+			tieBreakCard = cards.get((cards.size()-1)-n);
+		}
+		return tieBreakCard;
 	}
 	
 	public void setHandRank(HandRank rank){

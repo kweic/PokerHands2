@@ -22,13 +22,38 @@ public class PokerGame {
 		player2Hand = new Hand(player2Arr[1]);
 	}
 	
+	public void rankHands(){
+		comparator.rankHand(player1Hand); //Black
+		comparator.rankHand(player2Hand); //White
+	}
+	
+	private String tieBreak(Hand hand1, Hand hand2){
+		int tieBreak = 0;
+		String result = "Tie.";
+		while(tieBreak < hand1.getCards().size()-1){
+			Card hand1Card = hand1.getHighTieBreakCard(tieBreak);
+			Card hand2Card = hand2.getHighTieBreakCard(tieBreak);
+
+			tieBreak++;
+			int tieBreakDifference = hand1Card.compareTo(hand2Card);
+			
+			if(tieBreakDifference > 0){
+				result = "Black wins.";
+				break;
+			}else if(tieBreakDifference < 0){
+				result = "White wins.";
+				break;
+			}
+		}
+		return result;
+	}
+	
 	public String determineWinner(){
-		comparator.rankHand(player1Hand); //black
-		comparator.rankHand(player2Hand); //white
+		rankHands();
 		String result = "";
 		int playerScoreDifference = player1Hand.compareTo(player2Hand);
 		if(playerScoreDifference == 0){
-			result = "Tie.";
+			result = tieBreak(player1Hand, player2Hand);
 		}else if(playerScoreDifference > 0){
 			result = "Black wins.";
 		}else{

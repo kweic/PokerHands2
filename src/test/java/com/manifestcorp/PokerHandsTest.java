@@ -199,6 +199,20 @@ public class PokerHandsTest {
 	}
 	
 	@Test
+	public void testHighCardOfFlushIsSet(){
+		hand = new Hand(CARDS_FLUSH);
+		pokerHandComparator.rankHand(hand);
+		assertEquals(hand.getCards().get(4), hand.getHighTieBreakCard(0));
+	}
+	
+	@Test
+	public void testHighCardOfStraightIsSet(){
+		hand = new Hand(CARDS_STRAIGHT);
+		pokerHandComparator.rankHand(hand);
+		assertEquals(hand.getCards().get(4), hand.getHighTieBreakCard(0));
+	}
+	
+	@Test
 	public void testStraightFlushBeatsFourOfAKind(){
 		//how to assert one hand beats another..
 		//what to pass back..

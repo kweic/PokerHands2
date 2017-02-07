@@ -30,6 +30,7 @@ public class PokerHandComparator {
 				consecutive = false;
 			}
 		}
+
 		return consecutive;
 	}
 	
@@ -82,6 +83,10 @@ public class PokerHandComparator {
 		if(!isStraightFlush(hand))return false;
 		return (highCardFromFullHand(hand).getValue().value() == 'A' &&
 				hand.getCards().get(0).getValue().value() == 'T');
+	}
+	
+	public void organizeTieBreakerCards(Hand hand){
+		
 	}
 	
 	public void rankHand(Hand hand){
