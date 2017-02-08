@@ -7,8 +7,10 @@ public class PokerGame {
 	Hand player1Hand;
 	Hand player2Hand;
 	PokerHandComparator comparator;
+	boolean blackWin;
 	public PokerGame(){
 		comparator = new PokerHandComparator();
+		blackWin = false;
 	}
 	
 	public void passInput(String input){
@@ -59,8 +61,10 @@ public class PokerGame {
 			result = tieBreak(player1Hand, player2Hand);
 		}else if(playerScoreDifference > 0){
 			result = "Black wins.";
+			blackWin = true;
 		}else{
 			result = "White wins.";
+			blackWin = false;
 		}
 		
 		return result;
@@ -85,5 +89,11 @@ public class PokerGame {
 			details = handRank.rank();
 		}
 		return details;
+	}
+
+	public String printWinner() {
+		String winPrint = determineWinner();
+		winPrint += " - with "+winnerDetails(blackWin)+".";
+		return winPrint;
 	}
 }
