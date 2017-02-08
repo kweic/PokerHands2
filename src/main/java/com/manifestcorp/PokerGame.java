@@ -30,7 +30,7 @@ public class PokerGame {
 	private String tieBreak(Hand hand1, Hand hand2){
 		int tieBreak = 0;
 		String result = "Tie.";
-		while(tieBreak < hand1.getCards().size()-1){
+		while(tieBreak <= hand1.getCards().size()-1){
 			CardValue hand1Card = hand1.getHighTieBreakCard(tieBreak);
 			CardValue hand2Card = hand2.getHighTieBreakCard(tieBreak);
 			System.out.println();

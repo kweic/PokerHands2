@@ -38,6 +38,7 @@ public class PokerHandsTest {
 	private String CARDSET_FULLHOUSETIEBREAK_BLACKWINS = "Black: 5H KD 5S KH KD  White: 2D 2H KC KS KH";
 	private String CARDSET_FULLHOUSE_BLACKWINS="Black: 5H KD 5S KH KD  White: 2D 2H QC QS QH";
 	private String CARDSET_HIGHTRIPLET_BLACKWINS="Black: 2H KD 5S KH KD  White: 2D 3H 4C 4S 4H";
+	private String CARDSET_HIGHCARD_TIEBREAK=	 "Black: 2H 5C 6D 7S 8H  White: 3C 5D 6S 7H 8S";
 	
 	@Before
 	public void init(){
@@ -312,6 +313,13 @@ public class PokerHandsTest {
 		pokerGame.passInput(CARDSET_FULLHOUSETIEBREAK_WHITEWINS);
 		pokerGame.rankHands();
 		assertEquals("White wins.", pokerGame.determineWinner());
+	}
+	
+	@Test
+	public void testTieBreakOnLastHighCard(){
+		pokerGame.passInput(CARDSET_HIGHCARD_TIEBREAK);
+		pokerGame.rankHands();
+		assertEquals("White wins.",pokerGame.determineWinner());
 	}
 	
 	@Test

@@ -43,26 +43,24 @@ public class Hand implements Comparable<Hand>{
 		ArrayList<CardValue> tieBreakerSets = new ArrayList<CardValue>();
 		HashMap<CardValue, Integer> cardCounter = new HashMap<CardValue, Integer>();
 		for(Card card: cards){
-			if(cardCounter.containsKey(card.getValue().value())){
-				cardCounter.put(card.getValue(), cardCounter.get(card)+1);
+			if(cardCounter.containsKey(card.getValue())){
+				cardCounter.put(card.getValue(), (cardCounter.get(card.getValue())+1));
 			}else{
 				cardCounter.put(card.getValue(), 1);
 			}
 		}
+
 		int setSize = cards.size();
 		while(setSize > 0){
-			System.out.println("set size is now: "+setSize);
-			for(CardValue card: cardCounter.keySet()){
-				if(cardCounter.get(card) == setSize){
-					tieBreakerSets.add(card);
-					System.out.println("count: "+cardCounter.get(card));
-					System.out.println(" added card to set: "+card);
+			for(CardValue value: cardCounter.keySet()){
+				if(cardCounter.get(value) == setSize){
+					tieBreakerSets.add(value);
 				}
 			}
 			setSize--;
 		}
 
-		if(tieBreakerSets.size()-1 > n){
+		if(tieBreakerSets.size()-1 >= n){
 			return tieBreakerSets.get(n);
 		}
 		return null;
