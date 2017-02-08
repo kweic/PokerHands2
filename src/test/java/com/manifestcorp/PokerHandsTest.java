@@ -344,5 +344,11 @@ public class PokerHandsTest {
 		assertEquals("Tie.", pokerGame.printWinner());
 	}
 	
+	@Test
+	public void testPrintWinWithDetails_HighCardTieBreak(){
+		pokerGame.passInput(CARDSET_HIGHCARD_TIEBREAK);
+		assertEquals("White wins. - with High Card: THREE", pokerGame.printWinner());
+	}
+	
 
 }

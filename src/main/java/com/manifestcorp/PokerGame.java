@@ -7,10 +7,12 @@ public class PokerGame {
 	Hand player1Hand;
 	Hand player2Hand;
 	PokerHandComparator comparator;
-	boolean blackWin;
+	String MESSAGE_TIE = "Tie.";
+	String MESSAGE_PLAYER1WIN = "Black wins.";
+	String MESSAGE_PLAYER2WIN = "White wins.";
+	
 	public PokerGame(){
 		comparator = new PokerHandComparator();
-		blackWin = false;
 	}
 	
 	public void passInput(String input){
@@ -31,21 +33,20 @@ public class PokerGame {
 	
 	private String tieBreak(Hand hand1, Hand hand2){
 		int tieBreak = 0;
-		String result = "Tie.";
+		String result = MESSAGE_TIE;
 		while(tieBreak <= hand1.getCards().size()-1){
 			CardValue hand1Card = hand1.getHighTieBreakCard(tieBreak);
 			CardValue hand2Card = hand2.getHighTieBreakCard(tieBreak);
-			System.out.println();
+
 			tieBreak++;
-			System.out.println(hand1+" .. "+ hand2);
-			System.out.println("comparing: "+hand1Card+" to "+hand2Card);
+
 			int tieBreakDifference = hand1Card.compareTo(hand2Card);
-			System.out.println("tie break diff: "+tieBreakDifference);
+
 			if(tieBreakDifference > 0){
-				result = "Black wins.";
+				result = MESSAGE_PLAYER1WIN;
 				break;
 			}else if(tieBreakDifference < 0){
-				result = "White wins.";
+				result = MESSAGE_PLAYER2WIN;
 				break;
 			}
 		}
@@ -56,15 +57,13 @@ public class PokerGame {
 		rankHands();
 		String result = "";
 		int playerScoreDifference = player1Hand.compareTo(player2Hand);
-		System.out.println(player1Hand.getRank()+" "+player2Hand.getRank());
+
 		if(playerScoreDifference == 0){
 			result = tieBreak(player1Hand, player2Hand);
 		}else if(playerScoreDifference > 0){
 			result = "Black wins.";
-			blackWin = true;
 		}else{
 			result = "White wins.";
-			blackWin = false;
 		}
 		
 		return result;
@@ -93,7 +92,12 @@ public class PokerGame {
 
 	public String printWinner() {
 		String winPrint = determineWinner();
-		winPrint += " - with "+winnerDetails(blackWin)+".";
+		if(winPrint.equals(MESSAGE_PLAYER1WIN)){
+			winPrint += " - with "+winnerDetails(true)+ ".";
+		}else if(winPrint.equals(MESSAGE_PLAYER2WIN)){
+			winPrint += " - with "+winnerDetails(false)+".";
+		}
+
 		return winPrint;
 	}
 }
