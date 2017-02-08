@@ -323,8 +323,17 @@ public class PokerHandsTest {
 	}
 	
 	@Test
+	public void testWinDetailsFullHouseBlackWins(){
+		pokerGame.passInput(CARDSET_FULLHOUSE_BLACKWINS);
+		pokerGame.rankHands();
+		assertEquals("Full House",pokerGame.winnerDetails(true));
+	}
+	
+	@Test
 	public void testWinDetailsHighCard(){
-	//	pokerGame.passInput(input);
+		pokerGame.passInput(CARDSET_HIGHCARDWHITEACE);
+		pokerGame.rankHands();
+		assertEquals("High Card: Ace",pokerGame.winnerDetails(true));
 	}
 	
 	

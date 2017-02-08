@@ -65,4 +65,14 @@ public class PokerGame {
 		
 		return result;
 	}
+	
+	public String winnerDetails(boolean player1){
+		String winDetails = "";
+		if(player1){
+			winDetails = player1Hand.getRank().rank();
+		}else{
+			winDetails = player2Hand.getRank().rank();
+		}
+		return winDetails;
+	}
 }
