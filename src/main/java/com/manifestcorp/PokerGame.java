@@ -10,6 +10,7 @@ public class PokerGame {
 	String MESSAGE_TIE = "Tie.";
 	String MESSAGE_PLAYER1WIN = "Black wins.";
 	String MESSAGE_PLAYER2WIN = "White wins.";
+	//private CardValue tieBreakCard;
 	
 	public PokerGame(){
 		comparator = new PokerHandComparator();
@@ -41,12 +42,15 @@ public class PokerGame {
 			tieBreak++;
 
 			int tieBreakDifference = hand1Card.compareTo(hand2Card);
-
+			
+				
 			if(tieBreakDifference > 0){
 				result = MESSAGE_PLAYER1WIN;
+				hand1.setTieBreakCard(hand1Card);
 				break;
 			}else if(tieBreakDifference < 0){
 				result = MESSAGE_PLAYER2WIN;
+				hand2.setTieBreakCard(hand2Card);
 				break;
 			}
 		}
@@ -83,7 +87,7 @@ public class PokerGame {
 		HandRank handRank = hand.getRank();
 		String details = "";
 		if(handRank == handRank.HIGHCARD){
-			details = handRank.rank()+": "+hand.getCards().get(hand.getCards().size()-1).getValue();
+			details = handRank.rank()+": "+hand.getTieBreakCard();
 		}else{
 			details = handRank.rank();
 		}
@@ -93,9 +97,9 @@ public class PokerGame {
 	public String printWinner() {
 		String winPrint = determineWinner();
 		if(winPrint.equals(MESSAGE_PLAYER1WIN)){
-			winPrint += " - with "+winnerDetails(true)+ ".";
+			winPrint += " - with "+winnerDetails(true);
 		}else if(winPrint.equals(MESSAGE_PLAYER2WIN)){
-			winPrint += " - with "+winnerDetails(false)+".";
+			winPrint += " - with "+winnerDetails(false);
 		}
 
 		return winPrint;

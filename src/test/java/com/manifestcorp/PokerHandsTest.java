@@ -335,7 +335,7 @@ public class PokerHandsTest {
 	@Test
 	public void testPrintWinWithDetails_FullHouse(){
 		pokerGame.passInput(CARDSET_FULLHOUSETIEBREAK_BLACKWINS);
-		assertEquals("Black wins. - with Full House.", pokerGame.printWinner());
+		assertEquals("Black wins. - with Full House", pokerGame.printWinner());
 	}
 	
 	@Test

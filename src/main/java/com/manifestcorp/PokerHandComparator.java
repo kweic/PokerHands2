@@ -89,8 +89,14 @@ public class PokerHandComparator {
 		
 	}
 	
+	private void setHighestCardAsTieBreaker(Hand hand){
+		hand.setTieBreakCard(hand.getCards().get(hand.getCards().size()-1).getValue());
+	}
+	
 	public void rankHand(Hand hand){
 		HandRank rank = HandRank.HIGHCARD;
+		setHighestCardAsTieBreaker(hand);
+		
 		if(isStraightFlush(hand)){
 			if(isRoyalFlush(hand)){
 				rank = HandRank.ROYALFLUSH;

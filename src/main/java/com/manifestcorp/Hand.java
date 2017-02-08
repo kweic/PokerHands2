@@ -7,7 +7,7 @@ import java.util.HashMap;
 public class Hand implements Comparable<Hand>{
 	private ArrayList<Card> cards;
 	private HandRank handRank;
-	private Card highTieBreakCard;
+	private CardValue highTieBreakCard;
 	
 	public Hand(String cards_String){
 		String[] cards_arr = cards_String.split(" ");
@@ -90,6 +90,15 @@ public class Hand implements Comparable<Hand>{
 	@Override
 	public int compareTo(Hand compare) {
 		return this.handRank.ordinal() - compare.getRank().ordinal();
+	}
+
+	public void setTieBreakCard(CardValue cardValue) {
+		this.highTieBreakCard = cardValue;
+		
+	}
+	
+	public CardValue getTieBreakCard(){
+		return highTieBreakCard;
 	}
 	
 }
