@@ -69,10 +69,21 @@ public class PokerGame {
 	public String winnerDetails(boolean player1){
 		String winDetails = "";
 		if(player1){
-			winDetails = player1Hand.getRank().rank();
+			winDetails = getDetails(player1Hand);
 		}else{
-			winDetails = player2Hand.getRank().rank();
+			winDetails = getDetails(player2Hand);
 		}
 		return winDetails;
+	}
+	
+	private String getDetails(Hand hand){
+		HandRank handRank = hand.getRank();
+		String details = "";
+		if(handRank == handRank.HIGHCARD){
+			details = handRank.rank()+": "+hand.getCards().get(hand.getCards().size()-1).getValue();
+		}else{
+			details = handRank.rank();
+		}
+		return details;
 	}
 }

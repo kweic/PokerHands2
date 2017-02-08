@@ -333,9 +333,15 @@ public class PokerHandsTest {
 	public void testWinDetailsHighCard(){
 		pokerGame.passInput(CARDSET_HIGHCARDWHITEACE);
 		pokerGame.rankHands();
-		assertEquals("High Card: Ace",pokerGame.winnerDetails(true));
+		assertEquals("High Card: ACE",pokerGame.winnerDetails(false));//false is white win
 	}
 	
+	@Test
+	public void testPrintFullWinWithDetails(){
+		pokerGame.passInput(CARDSET_FULLHOUSETIEBREAK_BLACKWINS);
+		pokerGame.rankHands();
+		assertEquals("Black Wins. - with Full House.", pokerGame.printWinner());
+	}
 	
 
 }
