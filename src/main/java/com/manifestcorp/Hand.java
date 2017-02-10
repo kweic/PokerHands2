@@ -16,7 +16,7 @@ public class Hand implements Comparable<Hand>{
 		}
 		
 		cards = new ArrayList<Card>();
-		handRank = handRank.UNRANKED;
+		handRank = HandRank.UNRANKED;
 		
 		for(String card: cards_arr){
 			cards.add(new Card(CardValue.permissiveValueOf(card.charAt(0)), Suit.permissiveValueOf(card.charAt(1))));
@@ -27,11 +27,11 @@ public class Hand implements Comparable<Hand>{
 	
 	public CardValue getHighTieBreakCard(int n){
 		CardValue tieBreakCard = null;
-		if(handRank == handRank.ROYALFLUSH || 
-				handRank == handRank.STRAIGHTFLUSH || 
-				handRank == handRank.FLUSH || 
-				handRank == handRank.STRAIGHT ||
-				handRank == handRank.HIGHCARD){
+		if(handRank == HandRank.ROYALFLUSH || 
+				handRank == HandRank.STRAIGHTFLUSH || 
+				handRank == HandRank.FLUSH || 
+				handRank == HandRank.STRAIGHT ||
+				handRank == HandRank.HIGHCARD){
 			tieBreakCard = cards.get((cards.size()-1)-n).getValue();
 		}else{
 			tieBreakCard = cardSetTieBreaker(n);

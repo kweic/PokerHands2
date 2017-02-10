@@ -17,6 +17,8 @@ public class PokerGame {
 	}
 	
 	public void passInput(String input){
+		//takes the input, breaks it into hands
+		//assigns the string player name to player name variable
 		String[] inputArr = input.split("  ");
 		String[] player1Arr = inputArr[0].split(": ");
 		String[] player2Arr = inputArr[1].split(": ");
@@ -25,11 +27,6 @@ public class PokerGame {
 		player2 = player2Arr[0];
 		player1Hand = new Hand(player1Arr[1]);
 		player2Hand = new Hand(player2Arr[1]);
-	}
-	
-	public void rankHands(){
-		comparator.rankHand(player1Hand); //Black
-		comparator.rankHand(player2Hand); //White
 	}
 	
 	private String tieBreak(Hand hand1, Hand hand2){
@@ -71,6 +68,11 @@ public class PokerGame {
 		}
 		
 		return result;
+	}
+	
+	public void rankHands(){
+		comparator.rankHand(player1Hand); //Black
+		comparator.rankHand(player2Hand); //White
 	}
 	
 	public String winnerDetails(boolean player1){
