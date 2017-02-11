@@ -9,6 +9,8 @@
   <version>1</version>
   <packaging>war</packaging>
   <description>Manifest Bootcamp practice with Mavanizing a project</description>
+
+
   
     <build>    
 	<plugins>  
@@ -17,6 +19,12 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>2.10.4</version>
       </plugin>
+
+	<plugin>
+		<groupId>org.jenkins-ci.plugins</groupId>
+		<artifactId>plugin</artifactId>
+		<version>2.2</version>
+	</plugin>
 	  
 		<plugin>    
 			<groupId>org.apache.maven.plugins</groupId>    
