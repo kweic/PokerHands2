@@ -7,7 +7,7 @@
   <groupId>com.manifestcorp</groupId>
   <artifactId>lab</artifactId>
   <version>1</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
   <description>Manifest Bootcamp practice with Mavanizing a project</description>
   
     <build>    
