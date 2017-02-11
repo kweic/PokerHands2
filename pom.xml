@@ -117,6 +117,7 @@
 			
 			<properties>
 				<sonar.host.url>http://sonarqube:9000</sonar.host.url>
+				<jenkins.version>1.609.1</jenkins.version>
 			</properties>
 			
 			
